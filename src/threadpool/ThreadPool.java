@@ -8,12 +8,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ThreadPool {
     private LinkedBlockingQueue<Task> tasks = new LinkedBlockingQueue<>();
     private ArrayList<Thread> threads = new ArrayList<>();
-    public void addThread() {
-        Thread thread = new TaskExecuter(tasks);
-        threads.add(thread);
+    public void addThread(TaskExecuter taskExecuter) {
+        threads.add(taskExecuter);
     }
-    public void addTask() {
-        Task task = new Task();
+    public LinkedBlockingQueue<Task> getTasks() {
+        return tasks;
+    }
+    public void addTask(Task task) {
         tasks.offer(task);
     }
     public void threadPoolRun() {
