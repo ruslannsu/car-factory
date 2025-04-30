@@ -11,16 +11,18 @@ public class CreateCarTask extends Task {
     Storage<Body> bodyStorage;
     Storage<Accessory> accessoryStorage;
     Storage<Motor> motorStorage;
-    Storage<Car> storage;
+    Storage<Car> carStorage;
 
-    public CreateCarTask(Storage<Body> bodyStorage, Storage<Accessory> accessoryStorage, Storage<Motor> motorStorage) {
+    public CreateCarTask(Storage<Body> bodyStorage, Storage<Accessory> accessoryStorage, Storage<Motor> motorStorage, Storage<Car> carStorage) {
         super();
         this.bodyStorage = bodyStorage;
         this.accessoryStorage = accessoryStorage;
         this.motorStorage = motorStorage;
+        this.carStorage = carStorage;
     }
     @Override
     public void execute() {
+        Car car = new Car();
 
     }
 }
