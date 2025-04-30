@@ -15,6 +15,7 @@ public class TaskExecuter  extends Thread {
                 Task task = tasks.take();
                 System.out.println(threadId());
                 task.execute();
+                sleep(30);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

@@ -23,6 +23,9 @@ public class CreateCarTask extends Task {
     @Override
     public void execute() {
         Car car = new Car();
-
+        car.setMotor(motorStorage.getFromStorage());
+        car.setBody(bodyStorage.getFromStorage());
+        car.setAccessory(accessoryStorage.getFromStorage());
+        System.out.println("execute! car created");
     }
 }

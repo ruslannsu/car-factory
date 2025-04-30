@@ -25,8 +25,8 @@ public class Workers {
         for (int i = 0; i != workersCount; ++i) {
             threadPool.addThread(new Worker(threadPool.getTasks()));
         }
-        threadPool.addTask(new Task());
-        threadPool.addTask(new Task());
+        threadPool.addTask(new CreateCarTask(bodyStorage, accessoryStorage, motorStorage, carStorage));
+        threadPool.addTask(new CreateCarTask(bodyStorage, accessoryStorage, motorStorage, carStorage));
         threadPool.threadPoolRun();
 
     }

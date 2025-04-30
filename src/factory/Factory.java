@@ -10,6 +10,8 @@ import factory.suppliers.Supplier;
 import factory.workers.Workers;
 import threadpool.ThreadPool;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class Factory {
     private int workersCount;
     Storage<Body> bodyStorage;
@@ -17,11 +19,11 @@ public class Factory {
     Storage<Motor> motorStorage;
     Storage<Car> carStorage;
     Workers workers;
-    public Factory() {
+    public Factory() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         bodyStorage = new Storage<>(Body.class);
         accessoryStorage = new Storage<>(Accessory.class);
         motorStorage = new Storage<>(Motor.class);
-        workersCount = 1;
+        workersCount = 2;
         carStorage = new Storage<>(Car.class);
         workers = new Workers(bodyStorage, accessoryStorage, motorStorage, carStorage, workersCount);
 

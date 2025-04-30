@@ -2,22 +2,25 @@ package factory.storage;
 
 import factory.factory_product.FactoryProduct;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Storage<T extends FactoryProduct> {
-    ArrayList<T> storage = new ArrayList<>();
+    LinkedBlockingQueue<T> storage = new LinkedBlockingQueue<>();
     Class<T> type;
-    public Storage(Class<T> type) {
+    public Storage(Class<T> type) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         this.type = type;
+        storage.offer(type.getDeclaredConstructor().newInstance());
+        storage.offer(type.getDeclaredConstructor().newInstance());
+        storage.offer(type.getDeclaredConstructor().newInstance());
+        storage.offer(type.getDeclaredConstructor().newInstance());
+
+
     }
     public T getFromStorage() {
         try {
-
-            if (storage.getLast() == null) {
-
-            }
-            return type.getDeclaredConstructor().newInstance();
-
+            return storage.take();
         }
         catch (Exception ex) {
             ex.printStackTrace();

@@ -20,6 +20,7 @@ public class ThreadPool {
     public void threadPoolRun() {
         for (Thread thread: threads) {
             thread.start();
+
         }
     }
 }
