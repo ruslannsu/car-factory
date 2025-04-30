@@ -10,6 +10,6 @@ public class Main {
         System.out.println("thread check");
     }
     public static void main(String[] args) throws InterruptedException {
-        Factory factory = new Factory();
+        //Factory factory = new Factory();
     }
 }
