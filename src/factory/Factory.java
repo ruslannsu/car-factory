@@ -7,6 +7,7 @@ import factory.factory_product.components.Body;
 import factory.factory_product.components.Motor;
 import factory.storage.Storage;
 import factory.suppliers.Supplier;
+import factory.suppliers.Suppliers;
 import factory.workers.Workers;
 import threadpool.ThreadPool;
 
@@ -23,6 +24,7 @@ public class Factory {
     Storage<Motor> motorStorage;
     Storage<Car> carStorage;
     Workers workers;
+    Suppliers suppliers;
     public Factory() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
         bodyStorage = new Storage<>(Body.class);
         accessoryStorage = new Storage<>(Accessory.class);
@@ -30,7 +32,11 @@ public class Factory {
         this.properties = new Properties();
         properties.load(new FileInputStream("src/source/config.properties"));
         carStorage = new Storage<>(Car.class);
+        /*
         workers = new Workers(bodyStorage, accessoryStorage, motorStorage, carStorage, Integer.parseInt(properties.getProperty("workersCount")));
 
+         */
+        suppliers = new Suppliers(bodyStorage, accessoryStorage, motorStorage, 10, 10, 10);
+        suppliers.runSuppliers();
     }
 }

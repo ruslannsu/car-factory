@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Storage<T extends FactoryProduct> {
-    LinkedBlockingQueue<T> storage = new LinkedBlockingQueue<>();
+    LinkedBlockingQueue<T> storage = new LinkedBlockingQueue<>(10);
     Class<T> type;
     public Storage(Class<T> type) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         this.type = type;
@@ -22,7 +22,14 @@ public class Storage<T extends FactoryProduct> {
         }
     }
     public void getToStorage(T carDetail) {
-        storage.offer(carDetail);
+        try {
+            storage.put(carDetail);
+        }
+        catch (Exception ex) {
+            throw new RuntimeException();
+        }
+        System.out.println(storage.size());
+        System.out.println(type);
     }
 
 }
