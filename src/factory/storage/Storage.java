@@ -11,12 +11,6 @@ public class Storage<T extends FactoryProduct> {
     Class<T> type;
     public Storage(Class<T> type) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         this.type = type;
-        storage.offer(type.getDeclaredConstructor().newInstance());
-        storage.offer(type.getDeclaredConstructor().newInstance());
-        storage.offer(type.getDeclaredConstructor().newInstance());
-        storage.offer(type.getDeclaredConstructor().newInstance());
-
-
     }
     public T getFromStorage() {
         try {
@@ -27,4 +21,8 @@ public class Storage<T extends FactoryProduct> {
             return null;
         }
     }
+    public void getToStorage(T carDetail) {
+        storage.offer(carDetail);
+    }
+
 }
