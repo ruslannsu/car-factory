@@ -5,13 +5,14 @@ import factory.factory_product.components.Components;
 import factory.suppliers.Supplier;
 import threadpool.ThreadPool;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 public class Main {
     public static void printSomething() {
         System.out.println("thread check");
     }
-    public static void main(String[] args) throws InterruptedException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws InterruptedException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
         Factory factory = new Factory();
 
     }

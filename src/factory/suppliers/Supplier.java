@@ -6,9 +6,11 @@ import factory.storage.Storage;
 public class Supplier<T extends Components> extends Thread {
     private Class<T> type;
     private Storage<T> storage;
-    public Supplier(Class<T> type, Storage<T> storage) {
+    private int time;
+    public Supplier(Class<T> type, Storage<T> storage, int time) {
         this.type = type;
         this.storage =  storage;
+        this.time = time;
     }
     public void supply() {
         try {
@@ -20,6 +22,14 @@ public class Supplier<T extends Components> extends Thread {
     }
     @Override
     public void run() {
-        super.run();
+        while (isAlive()) {
+            supply();
+            try {
+                sleep(time);
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
