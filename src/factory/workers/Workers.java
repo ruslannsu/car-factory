@@ -26,8 +26,10 @@ public class Workers {
             threadPool.addThread(new Worker(threadPool.getTasks()));
         }
     }
-    public void run() {
+    public void acceptTask() {
         threadPool.addTask(new CreateCarTask(bodyStorage, accessoryStorage, motorStorage, carStorage));
+    }
+    public void run() {
         threadPool.threadPoolRun();
     }
 

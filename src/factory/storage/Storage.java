@@ -33,5 +33,7 @@ public class Storage<T extends FactoryProduct> {
         System.out.println(storage.size());
         System.out.println(type);
     }
-
+    public int getStorageSize() {
+        return storage.size();
+    }
 }
