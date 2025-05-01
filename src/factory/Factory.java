@@ -36,7 +36,17 @@ public class Factory {
         workers = new Workers(bodyStorage, accessoryStorage, motorStorage, carStorage, Integer.parseInt(properties.getProperty("workersCount")));
 
          */
-        suppliers = new Suppliers(bodyStorage, accessoryStorage, motorStorage, 10, 10, 10);
+        int bodySupplierTime = Integer.parseInt(properties.getProperty("bodySupplierTime"));
+        int motorSupplierTime = Integer.parseInt(properties.getProperty("motorSupplierTime"));
+        int accessorySupplierTime = Integer.parseInt(properties.getProperty("accessorySupplierTime"));
+        int bodySuppliersCount = Integer.parseInt(properties.getProperty("bodySupplierCount"));
+        int motorSupplierCount = Integer.parseInt(properties.getProperty("motorSupplierTime"));
+        int accessorySupplierCount = Integer.parseInt(properties.getProperty("accessorySupplierTime"));
+        suppliers = new Suppliers(bodyStorage, accessoryStorage, motorStorage,
+                                  bodySupplierTime, motorSupplierTime,
+                                  accessorySupplierTime, bodySuppliersCount,
+                                  accessorySupplierCount, motorSupplierCount);
         suppliers.runSuppliers();
+
     }
 }
