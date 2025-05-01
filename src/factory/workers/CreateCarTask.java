@@ -26,6 +26,6 @@ public class CreateCarTask extends Task {
         car.setMotor(motorStorage.getFromStorage());
         car.setBody(bodyStorage.getFromStorage());
         car.setAccessory(accessoryStorage.getFromStorage());
-        System.out.println("execute! car created");
+        carStorage.sendToStorage(car);
     }
 }

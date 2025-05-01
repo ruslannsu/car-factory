@@ -7,7 +7,6 @@ public class Task {
 
     }
     public void execute() {
-        System.out.println(getTaskID());
     }
 
 }

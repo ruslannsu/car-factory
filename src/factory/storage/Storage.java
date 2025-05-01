@@ -3,7 +3,6 @@ package factory.storage;
 import factory.factory_product.FactoryProduct;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Storage<T extends FactoryProduct> {
@@ -23,15 +22,13 @@ public class Storage<T extends FactoryProduct> {
             return null;
         }
     }
-    public void getToStorage(T carDetail) {
+    public void sendToStorage(T carDetail) {
         try {
             storage.put(carDetail);
         }
         catch (Exception ex) {
             throw new RuntimeException();
         }
-        System.out.println(storage.size());
-        System.out.println(type);
     }
     public int getStorageSize() {
         return storage.size();

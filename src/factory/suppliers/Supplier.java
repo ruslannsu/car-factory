@@ -14,7 +14,7 @@ public class Supplier<T extends Components> extends Thread {
     }
     public void supply() {
         try {
-            storage.getToStorage(type.getDeclaredConstructor().newInstance());
+            storage.sendToStorage(type.getDeclaredConstructor().newInstance());
         }
         catch (Exception ex) {
             ex.printStackTrace();

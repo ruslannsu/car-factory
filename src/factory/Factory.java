@@ -1,5 +1,7 @@
 package factory;
 
+import dealers.Dealer;
+import dealers.Dealers;
 import factory.controller.Controller;
 import factory.factory_product.Car;
 import factory.factory_product.components.Accessory;
@@ -19,6 +21,8 @@ import java.util.Properties;
 
 public class Factory {
     Properties properties;
+    Controller controller;
+    Dealers dealers;
     Storage<Body> bodyStorage;
     Storage<Accessory> accessoryStorage;
     Storage<Motor> motorStorage;
@@ -43,8 +47,12 @@ public class Factory {
                                   bodySupplierTime, motorSupplierTime,
                                   accessorySupplierTime, bodySuppliersCount,
                                   accessorySupplierCount, motorSupplierCount);
+        dealers = new Dealers(carStorage, Integer.parseInt(properties.getProperty("dealersCount")),
+                              Integer.parseInt(properties.getProperty("dealersTime")));
+        controller = new Controller(carStorage, workers);
         suppliers.runSuppliers();
-        workers.run();
-
+        workers.runWorkers();
+        controller.runController();
+        dealers.runDealers();
     }
 }

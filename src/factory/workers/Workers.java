@@ -29,7 +29,7 @@ public class Workers {
     public void acceptTask() {
         threadPool.addTask(new CreateCarTask(bodyStorage, accessoryStorage, motorStorage, carStorage));
     }
-    public void run() {
+    public void runWorkers() {
         threadPool.threadPoolRun();
     }
 

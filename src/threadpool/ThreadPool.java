@@ -15,12 +15,18 @@ public class ThreadPool {
         return tasks;
     }
     public void addTask(Task task) {
-        tasks.offer(task);
+        try {
+            tasks.offer(task);
+        }
+        catch (Exception ex)
+        {
+            throw new RuntimeException();
+        }
+
     }
     public void threadPoolRun() {
         for (Thread thread: threads) {
             thread.start();
-
         }
     }
 }

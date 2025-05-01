@@ -16,9 +16,16 @@ public class Controller extends Thread {
     public void run() {
         int carStorageOldSize = carStorage.getStorageSize();
         while(isAlive()) {
-            if (carStorageOldSize > carStorage.getStorageSize()) {
+            if ((carStorageOldSize > carStorage.getStorageSize()) || (carStorage.getStorageSize() == 0 )) {
+                if (carStorage.getStorageSize() > 0) {
+                    System.out.println(carStorage.getStorageSize());
+                }
                 workers.acceptTask();
             }
+            carStorageOldSize = carStorage.getStorageSize();
         }
+    }
+    public void runController() {
+        this.start();
     }
 }
