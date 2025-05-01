@@ -26,27 +26,25 @@ public class Factory {
     Workers workers;
     Suppliers suppliers;
     public Factory() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
-        bodyStorage = new Storage<>(Body.class);
-        accessoryStorage = new Storage<>(Accessory.class);
-        motorStorage = new Storage<>(Motor.class);
         this.properties = new Properties();
         properties.load(new FileInputStream("src/source/config.properties"));
-        carStorage = new Storage<>(Car.class);
-        /*
+        bodyStorage = new Storage<>(Body.class, Integer.parseInt(properties.getProperty("bodyStorageSize")));
+        accessoryStorage = new Storage<>(Accessory.class, Integer.parseInt(properties.getProperty("accessoryStorageSize")));
+        motorStorage = new Storage<>(Motor.class, Integer.parseInt(properties.getProperty("motorStorageSize")));
+        carStorage = new Storage<>(Car.class, Integer.parseInt(properties.getProperty("carStorageSize")));
         workers = new Workers(bodyStorage, accessoryStorage, motorStorage, carStorage, Integer.parseInt(properties.getProperty("workersCount")));
-
-         */
         int bodySupplierTime = Integer.parseInt(properties.getProperty("bodySupplierTime"));
         int motorSupplierTime = Integer.parseInt(properties.getProperty("motorSupplierTime"));
         int accessorySupplierTime = Integer.parseInt(properties.getProperty("accessorySupplierTime"));
         int bodySuppliersCount = Integer.parseInt(properties.getProperty("bodySupplierCount"));
-        int motorSupplierCount = Integer.parseInt(properties.getProperty("motorSupplierTime"));
-        int accessorySupplierCount = Integer.parseInt(properties.getProperty("accessorySupplierTime"));
+        int motorSupplierCount = Integer.parseInt(properties.getProperty("motorSupplierCount"));
+        int accessorySupplierCount = Integer.parseInt(properties.getProperty("accessorySupplierCount"));
         suppliers = new Suppliers(bodyStorage, accessoryStorage, motorStorage,
                                   bodySupplierTime, motorSupplierTime,
                                   accessorySupplierTime, bodySuppliersCount,
                                   accessorySupplierCount, motorSupplierCount);
         suppliers.runSuppliers();
+        workers.run();
 
     }
 }

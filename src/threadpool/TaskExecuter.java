@@ -13,7 +13,7 @@ public class TaskExecuter  extends Thread {
         while (isAlive()) {
             try {
                 Task task = tasks.take();
-                System.out.println(threadId());
+                //System.out.println(threadId());
                 task.execute();
                 sleep(30);
             } catch (InterruptedException e) {

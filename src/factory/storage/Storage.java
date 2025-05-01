@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Storage<T extends FactoryProduct> {
-    LinkedBlockingQueue<T> storage = new LinkedBlockingQueue<>(10);
+    LinkedBlockingQueue<T> storage;
     Class<T> type;
-    public Storage(Class<T> type) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public Storage(Class<T> type, int storageSize) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        storage = new LinkedBlockingQueue<>(storageSize);
         this.type = type;
+
     }
     public T getFromStorage() {
         try {
