@@ -1,3 +1,4 @@
+import UI.View;
 import factory.Factory;
 import factory.factory_product.components.Accessory;
 import factory.factory_product.components.Body;
@@ -13,8 +14,8 @@ public class Main {
         System.out.println("thread check");
     }
     public static void main(String[] args) throws InterruptedException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
-        Factory factory = new Factory();
-
+     //  Factory factory = new Factory();
+       View view = new View();
 
     }
 }
