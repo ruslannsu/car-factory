@@ -8,10 +8,13 @@ import com.formdev.flatlaf.FlatLaf;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
+import java.util.Properties;
 
 public class View extends JFrame{
-    public View() {
+    Properties properties;
+    public View(Properties properties) {
         super();
+        this.properties = properties;
         FlatLightLaf.setup();
         UIManager.put("Button.arc", 20);
         UIManager.put("Component.arc", 15);
@@ -27,16 +30,17 @@ public class View extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 600);
         setResizable(false);
-        int bottomShift = 150;
+        int bottomShift = 175;
         FactoryPlan factoryPlan = new FactoryPlan(bottomShift);
         factoryPlan.setPreferredSize(new Dimension(getWidth(), getHeight() - bottomShift));
-        factoryPlan.setBorder(new LineBorder(Color.BLACK, 2));
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(getWidth(), bottomShift));
+        //factoryPlan.setBorder(new LineBorder(Color.BLACK, 2));
+        SlidersPanel slidersPanel = new SlidersPanel(properties);
+        slidersPanel.setLayout(new FlowLayout());
+        slidersPanel.setPreferredSize(new Dimension(getWidth(), bottomShift));
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.add(factoryPlan);
-        mainPanel.add(panel);
+        mainPanel.add(slidersPanel);
         setContentPane(mainPanel);
         pack();
         setLocationRelativeTo(null);
