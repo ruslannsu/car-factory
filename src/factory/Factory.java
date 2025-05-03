@@ -11,6 +11,7 @@ import factory.storage.Storage;
 import factory.suppliers.Supplier;
 import factory.suppliers.Suppliers;
 import factory.workers.Workers;
+import observer_subject.Observer;
 import threadpool.ThreadPool;
 
 import java.io.FileInputStream;
@@ -29,14 +30,18 @@ public class Factory {
     Storage<Car> carStorage;
     Workers workers;
     Suppliers suppliers;
-    public Factory() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
+    public Factory(Observer observer) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
         this.properties = new Properties();
         properties.load(new FileInputStream("src/source/config.properties"));
         bodyStorage = new Storage<>(Body.class, Integer.parseInt(properties.getProperty("bodyStorageSize")));
+        bodyStorage.registerObserver(observer);
         accessoryStorage = new Storage<>(Accessory.class, Integer.parseInt(properties.getProperty("accessoryStorageSize")));
+        accessoryStorage.registerObserver(observer);
         motorStorage = new Storage<>(Motor.class, Integer.parseInt(properties.getProperty("motorStorageSize")));
+        motorStorage.registerObserver(observer);
         carStorage = new Storage<>(Car.class, Integer.parseInt(properties.getProperty("carStorageSize")));
         workers = new Workers(bodyStorage, accessoryStorage, motorStorage, carStorage, Integer.parseInt(properties.getProperty("workersCount")));
+        carStorage.registerObserver(observer);
         int bodySupplierTime = Integer.parseInt(properties.getProperty("bodySupplierTime"));
         int motorSupplierTime = Integer.parseInt(properties.getProperty("motorSupplierTime"));
         int accessorySupplierTime = Integer.parseInt(properties.getProperty("accessorySupplierTime"));

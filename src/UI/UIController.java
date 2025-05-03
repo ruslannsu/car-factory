@@ -27,19 +27,15 @@ public class UIController {
         switch (commandID) {
             case "dealerSlider":
                 factory.updateDealersTime(param);
-                System.out.println("executed");
                 break;
             case "bodySlider":
                 factory.updateSuppliersTime(param, "bodySupplier");
-                System.out.println("executed");
                 break;
             case "accessorySlider":
                 factory.updateSuppliersTime(param, "accessorySupplier");
-                System.out.println("executed");
                 break;
             case "motorSlider":
                 factory.updateSuppliersTime(param, "motorSupplier");
-                System.out.println("executed");
                 break;
         }
     }

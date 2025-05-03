@@ -18,8 +18,6 @@ public class Dealer extends Thread {
     public void run() {
         while (isAlive()) {
             carStorage.getFromStorage();
-            System.out.println(dealerTime);
-            System.out.println("<- dealer time");
             try {
                 sleep(dealerTime);
             }

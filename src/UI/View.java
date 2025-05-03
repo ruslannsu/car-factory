@@ -4,15 +4,17 @@ import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.*;
 
 import com.formdev.flatlaf.FlatLaf;
+import observer_subject.Observer;
 
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.util.Properties;
 
-public class View extends JFrame{
+public class View extends JFrame implements Observer {
     Properties properties;
     SlidersPanel slidersPanel;
+    FactoryPlan factoryPlan;
     public View(Properties properties) {
         super();
         this.properties = properties;
@@ -32,7 +34,7 @@ public class View extends JFrame{
         setSize(900, 600);
         setResizable(false);
         int bottomShift = 175;
-        FactoryPlan factoryPlan = new FactoryPlan(bottomShift);
+        factoryPlan = new FactoryPlan(bottomShift);
         factoryPlan.setPreferredSize(new Dimension(getWidth(), getHeight() - bottomShift));
         //factoryPlan.setBorder(new LineBorder(Color.BLACK, 2));
         slidersPanel = new SlidersPanel(properties);
@@ -50,5 +52,10 @@ public class View extends JFrame{
 
     public SlidersPanel getSlidersPanel() {
         return slidersPanel;
+    }
+
+    @Override
+    public void update(int value, String source) {
+        factoryPlan.updateSizes(value, source);
     }
 }
