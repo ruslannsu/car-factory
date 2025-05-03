@@ -47,9 +47,10 @@ public class FactoryPlan extends JPanel {
         rectangleDrawer.drawRectangle(panelWidth / 5, panelHeight / 12, Color.BLACK, Color.BLACK, "Склад акксессуаров", String.valueOf(accessorySuppliersStorageSize));
         rectangleDrawer.drawRectangle(panelWidth / 5, panelHeight / 3, Color.BLACK, Color.BLACK, "Склад двигателей", String.valueOf(motorSuppliersStorageSize));
         rectangleDrawer.drawRectangle(panelWidth / 5, (int) (panelHeight * 0.6), Color.BLACK, Color.BLACK, "Склад корпусов", String.valueOf(bodySuppliersStorageSize));
-        rectangleDrawer.drawRectangle((int) (panelWidth * 0.52), panelHeight / 3, Color.BLACK, Color.BLACK, "Сборка Машин", "null");
+        rectangleDrawer.drawRectangle((int) (panelWidth * 0.45), panelHeight / 3, Color.BLACK, Color.BLACK, "Сборка Машин", "null");
         rectangleDrawer.drawRectangle((int) (panelWidth * 0.675), panelHeight / 12, Color.BLACK, Color.BLACK, "Контроллер склада", "null");
         rectangleDrawer.drawRectangle((int) (panelWidth * 0.675), (int) (panelHeight * 0.6), Color.BLACK, Color.BLACK, "Поставщики машин", "null");
+        rectangleDrawer.drawRectangle((int) (panelWidth * 0.675), panelHeight / 3, Color.BLACK, Color.BLACK, "Склад машин", String.valueOf(carStorageSize));
     }
 
 }

@@ -10,11 +10,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 public class Main {
-    public static void printSomething() {
-        System.out.println("thread check");
-    }
     public static void main(String[] args) throws InterruptedException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
         CarFactory carFactory = new CarFactory();
-
     }
 }

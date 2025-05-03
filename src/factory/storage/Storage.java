@@ -18,6 +18,7 @@ public class Storage<T extends FactoryProduct> implements Subject {
     public T getFromStorage() {
         try {
             this.notifyObservers();
+            System.out.println(storage.size());
             return storage.take();
         }
         catch (Exception ex) {

@@ -6,7 +6,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class ThreadPool {
-    private LinkedBlockingQueue<Task> tasks = new LinkedBlockingQueue<>();
+    private LinkedBlockingQueue<Task> tasks = new LinkedBlockingQueue<>(30);
     private ArrayList<Thread> threads = new ArrayList<>();
     public void addThread(TaskExecuter taskExecuter) {
         threads.add(taskExecuter);

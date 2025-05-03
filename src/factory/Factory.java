@@ -30,9 +30,10 @@ public class Factory {
     Storage<Car> carStorage;
     Workers workers;
     Suppliers suppliers;
-    public Factory(Observer observer) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
-        this.properties = new Properties();
-        properties.load(new FileInputStream("src/source/config.properties"));
+    public Factory(Observer observer, Properties properties) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, IOException {
+       // this.properties = new Properties();
+      //  properties.load(new FileInputStream("src/source/config.properties"));
+        this.properties = properties;
         bodyStorage = new Storage<>(Body.class, Integer.parseInt(properties.getProperty("bodyStorageSize")));
         bodyStorage.registerObserver(observer);
         accessoryStorage = new Storage<>(Accessory.class, Integer.parseInt(properties.getProperty("accessoryStorageSize")));
