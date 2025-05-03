@@ -6,7 +6,7 @@ import factory.storage.Storage;
 import java.util.ArrayList;
 
 public class Dealer extends Thread {
-    int dealerTime;
+    public int dealerTime;
     Storage<Car> carStorage;
     public Dealer(Storage<Car> carStorage, int dealerTime) {
         super();
@@ -18,6 +18,8 @@ public class Dealer extends Thread {
     public void run() {
         while (isAlive()) {
             carStorage.getFromStorage();
+            System.out.println(dealerTime);
+            System.out.println("<- dealer time");
             try {
                 sleep(dealerTime);
             }

@@ -16,7 +16,7 @@ public class Dealers {
         this.dealersCount = dealersCount;
         this.dealersTime = dealersTime;
         for (int i = 0; i != dealersCount; ++i) {
-            dealers.add(new Dealer(carStorage, dealersCount));
+            dealers.add(new Dealer(carStorage, dealersTime));
         }
     }
     public void runDealers() {
@@ -27,5 +27,8 @@ public class Dealers {
 
     public void updateTime(int time) {
         this.dealersTime = time;
+        for (Dealer dealer : dealers) {
+            dealer.dealerTime = time;
+        }
     }
 }

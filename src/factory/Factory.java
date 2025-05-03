@@ -58,4 +58,17 @@ public class Factory {
     public void updateDealersTime(int time) {
         dealers.updateTime(time);
     }
+    public void  updateSuppliersTime(int time, String supplierName) {
+        switch (supplierName) {
+            case ("motorSupplier"):
+                suppliers.updateMotorSuppliersTime(time);
+                break;
+            case ("accessorySupplier"):
+                suppliers.updateAccessorySuppliersTime(time);
+                break;
+            case ("bodySupplier"):
+                suppliers.updateBodySuppliersTime(time);
+                break;
+        }
+    }
 }

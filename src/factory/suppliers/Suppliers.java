@@ -38,5 +38,20 @@ public class Suppliers {
             motorSupplier.start();
         }
     }
+    public void updateBodySuppliersTime(int time) {
+        for (Supplier<Body> bodySupplier : bodySuppliers) {
+            bodySupplier.updateTime(time);
+        }
+    }
+    public void updateMotorSuppliersTime(int time) {
+        for (Supplier<Motor> motorSupplier : motorSuppliers) {
+            motorSupplier.updateTime(time);
+        }
+    }
+    public void updateAccessorySuppliersTime(int time) {
+        for (Supplier<Accessory> accessorySupplier : accessorySuppliers) {
+            accessorySupplier.updateTime(time);
+        }
+    }
 
 }
