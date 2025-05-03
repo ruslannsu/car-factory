@@ -55,4 +55,7 @@ public class Factory {
         controller.runController();
         dealers.runDealers();
     }
+    public void updateDealersTime(int time) {
+        dealers.updateTime(time);
+    }
 }

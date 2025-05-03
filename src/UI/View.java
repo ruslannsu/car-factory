@@ -12,6 +12,7 @@ import java.util.Properties;
 
 public class View extends JFrame{
     Properties properties;
+    SlidersPanel slidersPanel;
     public View(Properties properties) {
         super();
         this.properties = properties;
@@ -34,7 +35,7 @@ public class View extends JFrame{
         FactoryPlan factoryPlan = new FactoryPlan(bottomShift);
         factoryPlan.setPreferredSize(new Dimension(getWidth(), getHeight() - bottomShift));
         //factoryPlan.setBorder(new LineBorder(Color.BLACK, 2));
-        SlidersPanel slidersPanel = new SlidersPanel(properties);
+        slidersPanel = new SlidersPanel(properties);
         slidersPanel.setLayout(new FlowLayout());
         slidersPanel.setPreferredSize(new Dimension(getWidth(), bottomShift));
         JPanel mainPanel = new JPanel();
@@ -47,4 +48,7 @@ public class View extends JFrame{
         setVisible(true);
     }
 
+    public SlidersPanel getSlidersPanel() {
+        return slidersPanel;
+    }
 }

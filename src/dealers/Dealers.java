@@ -25,8 +25,7 @@ public class Dealers {
         }
     }
 
-
-
-
-
+    public void updateTime(int time) {
+        this.dealersTime = time;
+    }
 }
